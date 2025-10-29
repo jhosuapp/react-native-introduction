@@ -15,3 +15,4 @@ Notas:
 - Views: Etiqueta que reemplaza el "div"
 - StyleSheet: estilos de los elementos
 - Text: Todos los textos deben estar en esta etiqueta
+- expo-font: Dependencia que anteriormente venía en la config inicial pero que ahora se debe instalar. Esta dependencia permite añadir fuentes personalizadas

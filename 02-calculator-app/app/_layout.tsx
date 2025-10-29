@@ -1,8 +1,10 @@
 import 'react-native-reanimated';
+import { View } from 'react-native';
 import { useFonts } from 'expo-font';
 
-import { Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { Slot } from 'expo-router';
+import { Colors } from '@/constants/theme';
 
 const RootLayout = () => {
   const [loaded] = useFonts({
@@ -14,10 +16,9 @@ const RootLayout = () => {
   }
 
   return (
-    <View>
-      <Text>Hola</Text>
-
+    <View style={{ backgroundColor: Colors.background, flex: 1 }}>
       <Slot />
+      <StatusBar style='light' />
     </View>
   );
 }
