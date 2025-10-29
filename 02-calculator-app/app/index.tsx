@@ -1,11 +1,12 @@
+import { CustomText } from "@/components/CustomText";
+import { globalStyles } from "@/styles/global-styles";
 import { Text, View } from "react-native";
 
 const CalculatorApp = () => {
     return (
-        <View>
-            <Text
-                style={{ fontSize: 50, fontFamily: 'SpaceMono', color: 'white' }}
-            >Calculator app</Text>
+        <View style={ globalStyles.calculatorContainer }>
+            <CustomText variant="h1">50 x 400</CustomText>
+            <CustomText variant="h2">20000</CustomText>
         </View>
     )
 }
