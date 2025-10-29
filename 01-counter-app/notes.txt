@@ -11,7 +11,7 @@ Notas:
 
 - TouchableOpacity: Botón
 - Pressable: Botón
-- StatusBar: 
-- Views
-- StyleSheet
+- StatusBar: La parte superior del dispositivo
+- Views: Etiqueta que reemplaza el "div"
+- StyleSheet: estilos de los elementos
 - Text: Todos los textos deben estar en esta etiqueta
