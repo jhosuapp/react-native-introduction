@@ -2,11 +2,16 @@ GIST Instalaciones necesarias: https://gist.github.com/Klerith/f2eea5447f2dc7e90
 Guía para instalar el emulador de android y iOS: https://docs.expo.dev/get-started/set-up-your-environment/?platform=android&device=simulated&mode=development-build&buildEnv=local
 
 
-
-
 Notas:
 
 - Con expo go podemos debuggear nuestra aplicación directamente en nuestro disitivo, en este caso, Instalaciones
 - Al momento de crear nuestra aplicación en react-native con expo, podemos setear ciertas flags las cuales crean una configuración diferente dependiendo de la flag
 - Ver archivos ocultos cmd + shidt + .
 - Volver a la carpeta raiz, cmd + flecha arriba
+
+- TouchableOpacity: Botón
+- Pressable: Botón
+- StatusBar: 
+- Views
+- StyleSheet
+- Text: Todos los textos deben estar en esta etiqueta
