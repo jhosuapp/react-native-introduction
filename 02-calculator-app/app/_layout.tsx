@@ -1,11 +1,15 @@
 import 'react-native-reanimated';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { useFonts } from 'expo-font';
 
 import { StatusBar } from 'expo-status-bar';
 import { Slot } from 'expo-router';
-import { Colors } from '@/constants/theme';
+import * as NavigationBar from 'expo-navigation-bar';
+
 import { globalStyles } from '@/styles/global-styles';
+
+const isAndroid = Platform.OS === 'android';
+isAndroid && NavigationBar.setBackgroundColorAsync('black');
 
 const RootLayout = () => {
   const [loaded] = useFonts({

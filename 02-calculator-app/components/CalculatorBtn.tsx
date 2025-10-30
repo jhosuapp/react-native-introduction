@@ -1,6 +1,8 @@
+import { Pressable, Text } from 'react-native';
+import * as Haptics from 'expo-haptics';
+
 import { Colors } from '@/constants/theme';
 import { globalStyles } from '@/styles/global-styles';
-import { Pressable, Text } from 'react-native';
 
 type Props = {
     label: string;
@@ -25,7 +27,10 @@ const CalculatorBtn = ({
                 pressed ? { opacity: 0.8 } : { opacity: 1 },
                 doubleSize && { width: 180 }
             ] }
-            onPress={ onPress }
+            onPress={ ()=> {
+                Haptics.selectionAsync();
+                onPress();
+            } }
         >
             <Text 
                 style={ [
