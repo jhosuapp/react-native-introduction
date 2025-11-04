@@ -12,10 +12,50 @@ const useCalculator = () => {
     const [number, setNumber] = useState<string>('0');
     const [prevNumber, setPrevNumber] = useState<string>('0');
     const lastOperation = useRef<Operator | undefined>(undefined);
-    
+
     useEffect(()=>{
-        setFormula(number);
+        if(lastOperation.current){
+            const firstFormulaPart = formula.split(' ').at(0);
+            setFormula(`${firstFormulaPart} ${lastOperation.current} ${number}`);
+        }else{
+            setFormula(number);
+        }
     },[number]);
+
+    useEffect(()=>{
+        const subResult = calculateSubResult();
+        setPrevNumber(String(subResult));
+    },[formula]);
+
+    const calculateSubResult = () => {
+        const [ firstNumber, operation, secondNumber ] = formula.split(' ');
+
+        const num1 = Number(firstNumber);
+        const num2 = Number(secondNumber);
+
+        if(isNaN(num2)) return firstNumber;
+
+        switch( operation ) {
+            case Operator.add: 
+                return num1 + num2;
+            case Operator.subtract: 
+                return num1 - num2;
+            case Operator.divide: 
+                return num1 / num2;
+            case Operator.multiply:
+                return num1 * num2;
+            default:
+                throw new Error(`Operation ${ operation } not implemented`);
+        }
+
+    }
+
+    const calculateResult = () => {
+        const result = calculateSubResult();
+        setFormula(String(result));
+        lastOperation.current = undefined;
+        setPrevNumber('0');
+    }
 
     const buildNumber = (numberString: string) => {
         if(number.includes('.') && numberString === '.') return;
@@ -80,12 +120,50 @@ const useCalculator = () => {
         lastOperation.current = undefined;
     }
 
+    const setLastNumber = () => {
+        calculateResult();
+        if(number.endsWith('.')){
+            setPrevNumber(number.slice(0, -1));
+        }
+        setPrevNumber(number);
+        setNumber('0');
+    }
+
+    const divideOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.divide;
+    }
+
+    const multiplyOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.multiply;
+    }
+    
+    const addOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.add;
+    }
+    
+    const subtractOperation = () => {
+        setLastNumber();
+        lastOperation.current = Operator.subtract;
+    }
+
     return {
+        // Props
         formula,
+        prevNumber,
+        //Methods
         buildNumber,
         clearNumber,
         toggleSign,
-        deleteLast
+        deleteLast,
+        divideOperation,
+        multiplyOperation,
+        addOperation,
+        subtractOperation,
+        calculateSubResult,
+        calculateResult
     }
 }
 

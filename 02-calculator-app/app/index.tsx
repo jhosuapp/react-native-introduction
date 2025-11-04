@@ -12,7 +12,13 @@ const CalculatorApp = () => {
         formula,
         clearNumber,
         toggleSign,
-        deleteLast
+        deleteLast,
+        prevNumber,
+        divideOperation,
+        multiplyOperation,
+        addOperation,
+        subtractOperation,
+        calculateResult
     } = useCalculator();
 
     return (
@@ -20,7 +26,11 @@ const CalculatorApp = () => {
             {/* Results */}
             <View style={{ paddingHorizontal: 32, paddingBottom: 24 }}>
                 <CustomText variant="h1">{ formula }</CustomText>
-                <CustomText variant="h2">20000</CustomText>
+                {prevNumber === formula ? (
+                    <CustomText variant="h2"> </CustomText>
+                ) : (
+                    <CustomText variant="h2">{ prevNumber }</CustomText>
+                )}
             </View>
 
             {/* Buttons */}
@@ -45,7 +55,7 @@ const CalculatorApp = () => {
                 />
                 <CalculatorBtn 
                     label='÷' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ divideOperation } 
                     color={ Colors.orange }
                 />
             </View>
@@ -64,7 +74,7 @@ const CalculatorApp = () => {
                 />
                 <CalculatorBtn 
                     label='x' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ multiplyOperation } 
                     color={ Colors.orange }
                 />
             </View>
@@ -83,7 +93,7 @@ const CalculatorApp = () => {
                 />
                 <CalculatorBtn 
                     label='-' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ subtractOperation } 
                     color={ Colors.orange }
                 />
             </View>
@@ -102,7 +112,7 @@ const CalculatorApp = () => {
                 />
                 <CalculatorBtn 
                     label='+' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ addOperation } 
                     color={ Colors.orange }
                 />
             </View>
@@ -119,7 +129,7 @@ const CalculatorApp = () => {
                 />
                 <CalculatorBtn 
                     label='=' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ calculateResult } 
                     color={ Colors.orange }
                 />
             </View>
