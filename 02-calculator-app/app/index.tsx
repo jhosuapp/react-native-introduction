@@ -10,7 +10,9 @@ const CalculatorApp = () => {
     const {
         buildNumber,
         formula,
-        clearNumber
+        clearNumber,
+        toggleSign,
+        deleteLast
     } = useCalculator();
 
     return (
@@ -31,13 +33,13 @@ const CalculatorApp = () => {
                 />
                 <CalculatorBtn 
                     label='+/-' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ toggleSign } 
                     blackText
                     color={ Colors.lightGray }
                 />
                 <CalculatorBtn 
                     label='del' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ deleteLast } 
                     blackText
                     color={ Colors.lightGray }
                 />

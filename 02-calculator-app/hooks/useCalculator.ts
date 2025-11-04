@@ -8,9 +8,9 @@ enum Operator {
 }
 
 const useCalculator = () => {
-    const [formula, setFormula] = useState<string>('');
-    const [number, setNumber] = useState<string>('');
-    const [prevNumber, setPrevNumber] = useState<string>('');
+    const [formula, setFormula] = useState<string>('0');
+    const [number, setNumber] = useState<string>('0');
+    const [prevNumber, setPrevNumber] = useState<string>('0');
     const lastOperation = useRef<Operator | undefined>(undefined);
     
     useEffect(()=>{
@@ -31,7 +31,11 @@ const useCalculator = () => {
             }
             
             if(numberString !== '0' && !number.includes('.')){
-                return setNumber(numberString);
+                if(number.includes('-')){
+                    return setNumber('-' + numberString);
+                }else{
+                    return setNumber(numberString);
+                }
             }
             
             if(numberString === '0' && !number.includes('.')){
@@ -43,14 +47,45 @@ const useCalculator = () => {
         setNumber(number + numberString);
     }
 
+    const toggleSign = () => {
+        if(number.includes('-')){
+            setNumber(number.replace('-', ''));
+        }else{
+            setNumber('-' + number);
+        }
+    }
+
+    const deleteLast = () => {
+        let currentSign = ''
+        let temporalNumber = number;
+
+        if(number.includes('-')){
+            currentSign = '-';
+            temporalNumber = number.replace('-', '');
+        }
+
+        if(temporalNumber.length > 1){
+            return setNumber(currentSign + temporalNumber.slice(0, -1));
+        }
+
+        if(temporalNumber.length === 1){
+            clearNumber();
+        }
+    }
+
     const clearNumber = () => {
-        setNumber('');
+        setNumber('0');
+        setFormula('0');
+        setPrevNumber('0');
+        lastOperation.current = undefined;
     }
 
     return {
         formula,
         buildNumber,
-        clearNumber
+        clearNumber,
+        toggleSign,
+        deleteLast
     }
 }
 
