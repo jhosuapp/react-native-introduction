@@ -1,15 +1,23 @@
 import { CalculatorBtn } from "@/components/CalculatorBtn";
 import { CustomText } from "@/components/CustomText";
 import { Colors } from "@/constants/theme";
+import { useCalculator } from "@/hooks/useCalculator";
 import { globalStyles } from "@/styles/global-styles";
 import { Text, View } from "react-native";
 
 const CalculatorApp = () => {
+
+    const {
+        buildNumber,
+        formula,
+        clearNumber
+    } = useCalculator();
+
     return (
         <View style={ globalStyles.calculatorContainer }>
             {/* Results */}
             <View style={{ paddingHorizontal: 32, paddingBottom: 24 }}>
-                <CustomText variant="h1">50 x 400</CustomText>
+                <CustomText variant="h1">{ formula }</CustomText>
                 <CustomText variant="h2">20000</CustomText>
             </View>
 
@@ -17,7 +25,7 @@ const CalculatorApp = () => {
             <View style={ globalStyles.row }>
                 <CalculatorBtn 
                     label='c' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> clearNumber() } 
                     blackText
                     color={ Colors.lightGray }
                 />
@@ -42,15 +50,15 @@ const CalculatorApp = () => {
             <View style={ globalStyles.row }>
                 <CalculatorBtn 
                     label='7' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('7') } 
                 />
                 <CalculatorBtn 
                     label='8' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('8') } 
                 />
                 <CalculatorBtn 
                     label='9' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('9') } 
                 />
                 <CalculatorBtn 
                     label='x' 
@@ -61,15 +69,15 @@ const CalculatorApp = () => {
             <View style={ globalStyles.row }>
                 <CalculatorBtn 
                     label='4' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('4') } 
                 />
                 <CalculatorBtn 
                     label='5' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('5') } 
                 />
                 <CalculatorBtn 
                     label='6' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('6') } 
                 />
                 <CalculatorBtn 
                     label='-' 
@@ -80,15 +88,15 @@ const CalculatorApp = () => {
             <View style={ globalStyles.row }>
                 <CalculatorBtn 
                     label='1' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('1') } 
                 />
                 <CalculatorBtn 
                     label='2' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('2') } 
                 />
                 <CalculatorBtn 
                     label='3' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('3') } 
                 />
                 <CalculatorBtn 
                     label='+' 
@@ -101,11 +109,11 @@ const CalculatorApp = () => {
                 <CalculatorBtn 
                     label='0' 
                     doubleSize
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('0') } 
                 />
                 <CalculatorBtn 
                     label='.' 
-                    onPress={ ()=> console.log('hola') } 
+                    onPress={ ()=> buildNumber('.') } 
                 />
                 <CalculatorBtn 
                     label='=' 
