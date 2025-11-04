@@ -25,12 +25,8 @@ const CalculatorApp = () => {
         <View style={ globalStyles.calculatorContainer }>
             {/* Results */}
             <View style={{ paddingHorizontal: 32, paddingBottom: 24 }}>
-                <CustomText variant="h1">{ formula }</CustomText>
-                {prevNumber === formula ? (
-                    <CustomText variant="h2"> </CustomText>
-                ) : (
-                    <CustomText variant="h2">{ prevNumber }</CustomText>
-                )}
+                <CustomText variant="h1">{ formula === 'Infinity' ? '0' : formula }</CustomText>
+                <CustomText variant="h2">{ prevNumber === 'Infinity' ? '0' : prevNumber }</CustomText>
             </View>
 
             {/* Buttons */}

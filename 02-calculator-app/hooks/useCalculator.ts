@@ -27,6 +27,12 @@ const useCalculator = () => {
         setPrevNumber(String(subResult));
     },[formula]);
 
+    useEffect(()=>{
+        if(formula === 'Infinity'){
+            clearNumber();
+        }
+    },[formula, prevNumber]);
+
     const calculateSubResult = () => {
         const [ firstNumber, operation, secondNumber ] = formula.split(' ');
 
@@ -53,6 +59,7 @@ const useCalculator = () => {
     const calculateResult = () => {
         const result = calculateSubResult();
         setFormula(String(result));
+        setNumber(String(result));
         lastOperation.current = undefined;
         setPrevNumber('0');
     }
