@@ -7,7 +7,13 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        'work-bold': ['WorkSans-Bold', 'sans-serif'],
+        'work-medium': ['WorkSans-Medium', 'sans-serif'],
+        'work-light': ['WorkSans-Light', 'sans-serif']
+      }
+    },
   },
   plugins: [],
 }
