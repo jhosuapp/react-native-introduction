@@ -16,3 +16,11 @@ Notas:
 - StyleSheet: estilos de los elementos
 - Text: Todos los textos deben estar en esta etiqueta
 - expo-font: Dependencia que anteriormente venía en la config inicial pero que ahora se debe instalar. Esta dependencia permite añadir fuentes personalizadas
+
+- Nativewind: es tailwind pero para react-native
+- StackNavigation
+- Enviar argumentos entre páginas
+- Botones personalizados
+- Estructura de directorios: Existe una estructura base, sobre la cual podemos crear screens, parecido a next.js
+- Temas y fuentes personalizadas
+- SafeAreaView: Nos permite crear un "contenedor" que añade un margin automatico
