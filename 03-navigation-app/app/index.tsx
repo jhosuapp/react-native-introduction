@@ -2,8 +2,8 @@ import { Text, View } from 'react-native';
 
 const App = () => {
     return (
-        <View>
-            <Text>Hola mundo</Text>
+        <View className='mt-10'>
+            <Text className='text-2xl font-bold text-blue-500'>Hola mundo</Text>
         </View>
     )
 }
